@@ -1,5 +1,5 @@
-
-import React, { useEffect, useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 
 type Usage = {
   from_iso: string; to_iso: string; source: string;
@@ -15,9 +15,7 @@ export default function UsagePage() {
   const [err, setErr] = useState<string>("");
   useEffect(() => {
     // Use NEXT_PUBLIC_API_BASE if set, else relative path
-    const base = typeof window !== "undefined" && (window as any).NEXT_PUBLIC_API_BASE
-      ? (window as any).NEXT_PUBLIC_API_BASE
-      : (process.env.NEXT_PUBLIC_API_BASE || "");
+  const base = process.env.NEXT_PUBLIC_API_BASE ?? "";
     fetch(`${base}/billing/usage`).then(async r => {
       if (!r.ok) throw new Error(await r.text());
       return r.json();
