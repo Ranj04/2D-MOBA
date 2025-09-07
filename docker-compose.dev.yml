@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: aetherarena
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+  api:
+    build: ./services/api
+    command: uvicorn services.api.app.main:app --reload --host 0.0.0.0 --port 8000
+    environment:
+      - DATABASE_URL=postgresql+psycopg://user:pass@postgres/aetherarena
+      - REDIS_URL=redis://redis:6379/0
+      - JWT_SECRET=dev_secret
+      - JWT_TTL_SECONDS=86400
+      - CORS_ORIGINS=http://localhost:3000
+      - PUBLIC_WS_ORIGIN=http://localhost:8000
+    volumes:
+      - ./services/api:/app/services/api
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - 8000:8000
+volumes:
+  pgdata:

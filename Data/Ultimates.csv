@@ -1,0 +1,5 @@
+Id,DisplayName,Cooldown,BlueprintAbilityPath
+domination_field,Domination Field,90,/Game/Abilities/GA_DominationField.GA_DominationField_C
+meteor_storm,Meteor Storm,120,/Game/Abilities/GA_MeteorStorm.GA_MeteorStorm_C
+assassinate,Assassinate,75,/Game/Abilities/GA_Assassinate.GA_Assassinate_C
+fortress,Fortress,90,/Game/Abilities/GA_Fortress.GA_Fortress_C

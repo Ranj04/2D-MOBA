@@ -1,0 +1,15 @@
+{
+    "FileVersion": 3,
+    "EngineAssociation": "5.3",
+    "Category": "Games",
+    "Description": "Aether Arena — 2D MOBA (Paper2D, EOS, GAS).",
+    "Modules": [{ "Name": "AetherArena", "Type": "Runtime", "LoadingPhase": "Default" }],
+    "Plugins": [
+        { "Name": "Paper2D", "Enabled": true },
+        { "Name": "OnlineSubsystem", "Enabled": true },
+        { "Name": "OnlineSubsystemEOS", "Enabled": true },
+        { "Name": "GameplayAbilities", "Enabled": true },
+        { "Name": "GameplayTasks", "Enabled": true },
+        { "Name": "AIModule", "Enabled": true }
+    ]
+}

@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: aetherarena-api
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn services.api.app.main:app --host 0.0.0.0 --port 8000
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_TTL_SECONDS
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: PUBLIC_WS_ORIGIN
+        sync: false
